@@ -47,14 +47,16 @@ document.getElementById("run-btna").addEventListener("click", run);
 async function makeAPICall() {
   // Create a new XMLHttpRequest object
   var xhr = new XMLHttpRequest();
-
+sheets.getItem("Sheet1").getRange("B1").values ='in the method';
   // Define the API endpoint URL
   var apiUrl = 'https://9ea7-34-83-39-85.ngrok-free.app';
+    sheets.getItem("Sheet1").getRange("B2").values ='before call';
 fetch(apiUrl)
     .then(function(response) {
       if (response.ok) {
         return response.json();
       } else {
+          sheets.getItem("Sheet1").getRange("B3").values =response;
         throw new Error('Error: ' + response.status);
       }
     })
@@ -64,6 +66,7 @@ fetch(apiUrl)
     })
     .catch(function(error) {
       console.log(error);
+        sheets.getItem("Sheet1").getRange("B4").values =error;
       // Handle the error
     });
 }
