@@ -17,10 +17,10 @@
         Office.onReady(function (info) { });
 
         // Add a click event listener to the button
-        document.getElementById("run-btn").addEventListener("click", run);
+        document.getElementById("run-btn").addEventListener("click", runa);
 
         // Based on 'Basic API call' sample from ScriptLab
-        async function run() {
+        async function runa() {
             await Excel.run(async (context) => {
                 const range = context.workbook.getSelectedRange();
                 range.format.fill.color = "yellow";
