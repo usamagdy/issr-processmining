@@ -14,7 +14,7 @@
 
 <body>
     <!-- Put a button on the task pane -->
-    <p>Hit the Run button 13:58!</p>
+    <p>Hit the Run button 2:00!</p>
     <button id="run-btn" type="button">Run</button>
     <script>
         // Initialize Office.js
@@ -43,7 +43,7 @@
     <script>
       // Initialize Office.js
         Office.onReady(function (info) { });
-         const py = new Pyodide.PyScript();
+         
         // Add a click event listener to the button
         document.getElementById("run-btna").addEventListener("click", run);
 
@@ -51,6 +51,7 @@
         async function run() {
             await Excel.run(async (context) => {
                 const range = context.workbook.getSelectedRange();
+                const py = new Pyodide.PyScript();
                 range.format.fill.color = "yellow";
                 range.load("address");
 
