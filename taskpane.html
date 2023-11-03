@@ -11,7 +11,7 @@
 
 <body>
     <!-- Put a button on the task pane -->
-    <p>Hit the Run button 2:14!</p>
+    <p>Hit the Run button 2:20!</p>
     <button id="run-btn" type="button">Run</button>
     <script>
         // Initialize Office.js
@@ -37,6 +37,17 @@
     </script>
       <p>Hit the Run button TTTEESST!</p>
     <button id="run-btna" type="button">WS</button>
+      <py-tutor>
+      <section class="pyscript">
+                Hello world! <br />
+                This is the current date and time, as computed by Python:
+                <py-script>
+                    from datetime import datetime
+                    now = datetime.now()
+                    display(now.strftime("%m/%d/%Y, %H:%M:%S"))
+                </py-script>
+            </section>
+            </py-tutor>
     <script  type="text/python"> 
       // Initialize Office.js
         Office.onReady(function (info) { });
@@ -62,23 +73,7 @@
         }
 
     </script>
-     <py-tutor>
-            <py-config>
-                plugins = [
-                  "https://pyscript.net/latest/plugins/python/py_tutor.py"
-                ]
-            </py-config>
 
-            <section class="pyscript">
-                Hello world! <br />
-                This is the current date and time, as computed by Python:
-                <py-script>
-                    from datetime import datetime
-                    now = datetime.now()
-                    display(now.strftime("%m/%d/%Y, %H:%M:%S"))
-                </py-script>
-            </section>
-        </py-tutor>
 </body>
 
 </html>
