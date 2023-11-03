@@ -10,7 +10,7 @@
 
 <body>
     <!-- Put a button on the task pane -->
-    <p>Hit the Run button 12:40!</p>
+    <p>Hit the Run button 12:42!</p>
     <button id="run-btn" type="button">Run</button>
     <script>
         // Initialize Office.js
@@ -40,6 +40,8 @@
        Office.onReady(function (info) { });
        document.getElementById("run-btna").addEventListener("click", run);
     async function run() {
+         await context.sync();
+        const sheets = context.workbook.worksheets;
         sheets.getItem("Sheet1").getRange("B6").values ='ttteeessstttt';
       // Create a new XMLHttpRequest object
       var xhr = new XMLHttpRequest();
