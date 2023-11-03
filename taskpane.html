@@ -11,7 +11,7 @@
 
 <body>
     <!-- Put a button on the task pane -->
-    <p>Hit the Run button 2:22!</p>
+    <p>Hit the Run button 2:24!</p>
     <button id="run-btn" type="button">Run</button>
     <script>
         // Initialize Office.js
@@ -46,6 +46,7 @@
                 <py-script>
                     from datetime import datetime
                     now = datetime.now()
+                    const date =now.strftime("%m/%d/%Y, %H:%M:%S")
                     display(now.strftime("%m/%d/%Y, %H:%M:%S"))
                 </py-script>
             </section>
@@ -66,8 +67,7 @@
 
                 await context.sync();
 
-                const sheets = context.workbook.worksheets;
-                const date = py.runPython("import datetime\nprint(datetime.date.today())");
+                const sheets = context.workbook.worksheets;               
 
                 sheets.getItem("Sheet1").getRange("B1").values = [["The selected address was " + range.address + "." +date ]];
             });
