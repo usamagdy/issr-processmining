@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Taskpane</title>
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script src="https://pyscript.net/latest/pyscript.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 </head>
 
 <body>
     <!-- Put a button on the task pane -->
-    <p>Hit the Run button 12:45!</p>
+    <p>Hit the Run button 13:55!</p>
     <button id="run-btn" type="button">Run</button>
     <script>
         // Initialize Office.js
@@ -39,7 +43,7 @@
     <script>
       // Initialize Office.js
         Office.onReady(function (info) { });
-
+         const py = new Pyodide.PyScript();
         // Add a click event listener to the button
         document.getElementById("run-btna").addEventListener("click", run);
 
@@ -53,7 +57,7 @@
                 await context.sync();
 
                 const sheets = context.workbook.worksheets;
-                sheets.getItem("Sheet1").getRange("B1").values = [["The selected address was " + range.address + "."]];
+                sheets.getItem("Sheet1").getRange("B1").values = [["The selected address was " + range.address + "." +  py.runPython("import datetime\nprint(datetime.date.today())")]];
             });
         }
 
