@@ -58,7 +58,9 @@
                 await context.sync();
 
                 const sheets = context.workbook.worksheets;
-                sheets.getItem("Sheet1").getRange("B1").values = [["The selected address was " + range.address + "." +  py.runPython("import datetime\nprint(datetime.date.today())")]];
+                const date = py.runPython("import datetime\nprint(datetime.date.today())");
+
+                sheets.getItem("Sheet1").getRange("B1").values = [["The selected address was " + range.address + "." +date ]];
             });
         }
 
