@@ -16,9 +16,9 @@
 
 <body>
     <!-- Put a button on the task pane -->
-    <p>Hit the Run button 11:29!</p>
+    <p>Hit the Run button 12:50!</p>
     <button id="run-btn" type="button">Run</button>
-    <p>Hit the Run button TTTEESST!</p>
+    <p>Hit the Run button to call the WS !</p>
     <button id="run-btna" type="button">WS</button>
     
     <script>
@@ -27,7 +27,7 @@
 
         // Add a click event listener to the button
         document.getElementById("run-btn").addEventListener("click", run);
-         document.getElementById("run-btna").addEventListener("click", getStarCount);
+         document.getElementById("run-btna").addEventListener("click", runws);
         // Based on 'Basic API call' sample from ScriptLab
         async function run() {
             await Excel.run(async (context) => {
@@ -41,35 +41,65 @@
                 sheets.getItem("Sheet1").getRange("A1").values = [["The selected address was " + range.address + "."]];
             });
         }
+
+      async function runws() {
+            await Excel.run(async (context) => {
+                const range = context.workbook.getSelectedRange();
+                range.format.fill.color = "yellow";
+                range.load("address");
+
+                await context.sync();
+
+                const sheets = context.workbook.worksheets;
+                sheets.getItem("Sheet1").getRange("A1").values = [["The selected address was " + range.address + "."]];
+            });
+        }
     
-async function getStarCount() {
+async function runws() {
+  await Excel.run(async (context) => {
 
-  const url = "https://160f-34-125-91-46.ngrok-free.app/";
+    const range = context.workbook.getSelectedRange();
+    range.format.fill.color = "yellow";
+    range.load("address");
+    console.error("Before call");
+    var text = " ";
+    await new Promise(function (resolve, reject) {
+      const url = "https://160f-34-125-91-46.ngrok-free.app/";
+      var response = "";
+      let xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (xhttp.readyState !== 4) return;
 
-  let xhttp = new XMLHttpRequest();
+        if (xhttp.status == 200) {
+          resolve(JSON.parse(xhttp.responseText).watchers_count);
+          response = xhttp.responseText;
+          text = xhttp.responseText;
+          console.error("MAIN " + response);
+          return response;
 
-  return new Promise(function (resolve, reject) {
-    xhttp.onreadystatechange = function () {
-      if (xhttp.readyState !== 4) return;
-      console.error("0000");
-      if (xhttp.status == 200) {
-        resolve(JSON.parse(xhttp.responseText).watchers_count);
-        console.error(xhttp.responseText);
-        console.error("1111");
-      } else {
-        reject({
-          status: xhttp.status,
+        } else {
+          reject({
+            status: xhttp.status,
 
-          statusText: xhttp.statusText
-        });
-      }
-    };
-    console.error("AA");
-    xhttp.open("GET", url, true);
-    xhttp.setRequestHeader("ngrok-skip-browser-warning", "1");
+            statusText: xhttp.statusText
+          });
+        }
+      };
 
-    console.error("BBBB");
-    xhttp.send();
+      xhttp.open("GET", url, true);
+      xhttp.setRequestHeader("ngrok-skip-browser-warning", "1");
+
+      xhttp.send();
+
+    });;
+
+    console.error(text);
+    console.error("after call");
+    await context.sync();
+
+    const sheets = context.workbook.worksheets;
+    sheets.getItem("Sheet1").getRange("A1").values = [["The selected address was " + text]];
+    await context.sync();
   });
 }
 
