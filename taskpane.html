@@ -16,12 +16,16 @@
 
 <body>
     <!-- Put a button on the task pane -->
-    <p>Hit the Run button 18:35!</p>
+    <p>Hit the Run button 19:58!</p>
     <button id="run-btn" type="button">Run</button>
     <p>Hit the Run button to call the GET API !</p>
     <button id="run-btna" type="button">WS</button>
     <p>Hit the Run button to Say Hello !!</p>
     <button id="run-btnaH" type="button">Hello</button>
+
+   <p>Hit the Run button to get time</p>
+    <button id="btnaTime" type="button">Hello</button>
+  
     <script>
         // Initialize Office.js
         Office.onReady(function (info) { });
@@ -30,6 +34,73 @@
         document.getElementById("run-btn").addEventListener("click", run);
         document.getElementById("run-btna").addEventListener("click", runws);
         document.getElementById("run-btnaH").addEventListener("click", runwspost);
+       document.getElementById("run-btnaTime").addEventListener("click", runwspostActiveCell);
+      
+
+
+      
+async function runwspostActiveCell() {
+  await Excel.run(async (context) => {
+    let activeCell = context.workbook.getActiveCell();
+    activeCell.load("address, values,columnIndex,rowIndex");
+    await context.sync();
+
+    console.log("The active cell is " + activeCell.columnIndex + activeCell.rowIndex );
+
+    const range = context.workbook.getSelectedRange();
+    range.format.fill.color = "white";
+    range.load("address");
+
+    const sheets = context.workbook.worksheets;
+    let cell = sheets.getItem("Sheet1").getCell(activeCell.columnIndex, activeCell.rowIndex);
+    cell.load("address, values");
+
+    await context.sync();
+    var jsonDate = cell.values[0][0];
+    console.error(jsonDate);
+    var text = " ";
+    await new Promise(function (resolve, reject) {
+      const url = "https://6143-35-199-156-247.ngrok-free.app";
+      var response = "";
+      let xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (xhttp.readyState !== 4) return;
+
+        if (xhttp.status == 200) {
+          resolve(JSON.parse(xhttp.responseText).watchers_count);
+          response = xhttp.responseText;
+          text = xhttp.responseText;
+          console.error("MAIN " + response);
+          return response;
+
+        } else {
+          reject({
+            status: xhttp.status,
+
+            statusText: xhttp.statusText
+          });
+        }
+      };
+
+      xhttp.open("POST", url, true);
+      xhttp.setRequestHeader("ngrok-skip-browser-warning", "1");
+      xhttp.setRequestHeader('Content-Type', 'application/json');
+      console.error("before va" + jsonDate);
+      xhttp.send(JSON.stringify(jsonDate));
+
+    });;
+
+    console.error(text);
+    console.error("after call");
+    await context.sync();
+
+
+    sheets.getItem("Sheet1").getCell(activeCell.columnIndex, activeCell.rowIndex).values = [[ text]];
+    await context.sync();
+  });
+}
+
+
       
         // Based on 'Basic API call' sample from ScriptLab
       async function runwspost() {
