@@ -16,7 +16,7 @@
 
 <body>
     <!-- Put a button on the task pane -->
-    <p>Hit the Run button 10:43!</p>
+    <p>Hit the Run button 11:00!</p>
     <button id="run-btn" type="button">Run</button>
     <p>Hit the Run button TTTEESST!</p>
     <button id="run-btna" type="button">WS</button>
@@ -27,7 +27,7 @@
 
         // Add a click event listener to the button
         document.getElementById("run-btn").addEventListener("click", run);
-         document.getElementById("run-btna").addEventListener("click", fetchData);
+         document.getElementById("run-btna").addEventListener("click", webRequest);
         // Based on 'Basic API call' sample from ScriptLab
         async function run() {
             await Excel.run(async (context) => {
@@ -41,20 +41,20 @@
                 sheets.getItem("Sheet1").getRange("A1").values = [["The selected address was " + range.address + "."]];
             });
         }
-      function fetchData() {
-            fetch('https://api.publicapis.org/entries')
-                .then(response => response.json())
-                .then(data => {
-                    // Handle the API response data
-                    console.log(data);
-                    // Update the HTML content with the received data
-                    document.getElementById('result').textContent = JSON.stringify(data, null, 2);
-                })
-                .catch(error => {
-                    // Handle any errors that occur during the API request
-                    console.error('Error:', error);
-                });
+     function webRequest() {
+  let url = "https://www.contoso.com/NumberOfPeopleInSpace"; // This is a hypothetical URL.
+  return new Promise(function (resolve, reject) {
+    fetch(url)
+      .then(function (response){
+        return response.json();
         }
+      )
+      .then(function (json) {
+        resolve(JSON.stringify(json.names));
+      })
+  })
+}
+
 
        
 
