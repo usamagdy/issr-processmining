@@ -27,7 +27,7 @@
 
         // Add a click event listener to the button
         document.getElementById("run-btn").addEventListener("click", run);
-         document.getElementById("run-btna").addEventListener("click", run);
+         document.getElementById("run-btna").addEventListener("click", fetchData);
         // Based on 'Basic API call' sample from ScriptLab
         async function run() {
             await Excel.run(async (context) => {
@@ -40,6 +40,20 @@
                 const sheets = context.workbook.worksheets;
                 sheets.getItem("Sheet1").getRange("A1").values = [["The selected address was " + range.address + "."]];
             });
+        }
+      function fetchData() {
+            fetch('https://api.publicapis.org/entries')
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the API response data
+                    console.log(data);
+                    // Update the HTML content with the received data
+                    document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    // Handle any errors that occur during the API request
+                    console.error('Error:', error);
+                });
         }
 
        
