@@ -46,7 +46,7 @@ async function runwspost() {
 
     console.log("The active cell is " + activeCell.columnIndex + activeCell.rowIndex);
     const sheets = context.workbook.worksheets;
-    let cell = sheets.getItem("Sheet1").getCell(activeCell.columnIndex, activeCell.rowIndex);
+    let cell = sheets.getItem("Sheet1").getCell(activeCell.rowIndex,activeCell.columnIndex );
     cell.load("address, values");
     await context.sync();
     var jsonDate = cell.values[0][0];
