@@ -39,14 +39,14 @@
     // Sample 1: Button on Task pane
     // Use runPython with the desired endpoint of your web app 
     function helloTaskpane() {
-      xlwings.runPython(window.location.origin + "/hello");
+      xlwings.runPython("https://6fcd-34-125-91-46.ngrok-free.app/hello");
     }
 
     // Sample 2: Button on Ribbon
     // Needs event.completed() and Office.actions.associate
     // "hello-ribbon" is the identifier in manifest.xml
     function helloRibbon(event) {
-      xlwings.runPython("http://6fcd-34-125-91-46.ngrok-free.app/hello");
+      xlwings.runPython("https://6fcd-34-125-91-46.ngrok-free.app/hello");
       event.completed();
     }
     Office.actions.associate("hello-ribbon", helloRibbon);
