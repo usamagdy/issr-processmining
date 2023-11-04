@@ -48,10 +48,7 @@ async function runwspostActiveCell() {
 
     console.log("The active cell is " + activeCell.columnIndex + activeCell.rowIndex );
 
-    const range = context.workbook.getSelectedRange();
-    range.format.fill.color = "white";
-    range.load("address");
-
+  
     const sheets = context.workbook.worksheets;
     let cell = sheets.getItem("Sheet1").getCell(activeCell.columnIndex, activeCell.rowIndex);
     cell.load("address, values");
@@ -108,10 +105,7 @@ async function runwspostActiveCell() {
       async function runwspost() {
   await Excel.run(async (context) => {
 
-    const range = context.workbook.getSelectedRange();
-    range.format.fill.color = "white";
-    range.load("address");
-   
+      
     const sheets = context.workbook.worksheets;  
     let  cell = sheets.getItem("Sheet1").getCell(1, 0);
     cell.load("address, values");
