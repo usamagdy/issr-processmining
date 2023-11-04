@@ -16,15 +16,15 @@
 
 <body>
     <!-- Put a button on the task pane -->
-    <p>Hit the Run button 19:58!</p>
+    <p>Hit the Run button 20:03!</p>
     <button id="run-btn" type="button">Run</button>
     <p>Hit the Run button to call the GET API !</p>
     <button id="run-btna" type="button">WS</button>
     <p>Hit the Run button to Say Hello !!</p>
-    <button id="run-btnaH" type="button">Hello</button>
+    <button id="run-btnaH" type="button">Say Hello</button>
 
    <p>Hit the Run button to get time</p>
-    <button id="btnaTime" type="button">Hello</button>
+    <button id="run-btnaTime" type="button">Get Time </button>
   
     <script>
         // Initialize Office.js
@@ -34,11 +34,12 @@
         document.getElementById("run-btn").addEventListener("click", run);
         document.getElementById("run-btna").addEventListener("click", runws);
         document.getElementById("run-btnaH").addEventListener("click", runwspost);
-       document.getElementById("run-btnaTime").addEventListener("click", runwspostActiveCell);
+        document.getElementById("run-btnaTime").addEventListener("click", runwspostActiveCell);
       
 
 
       
+
 async function runwspostActiveCell() {
   await Excel.run(async (context) => {
     let activeCell = context.workbook.getActiveCell();
@@ -95,10 +96,11 @@ async function runwspostActiveCell() {
     await context.sync();
 
 
-    sheets.getItem("Sheet1").getCell(activeCell.columnIndex, activeCell.rowIndex).values = [[ text]];
+    sheets.getItem("Sheet1").getCell(activeCell.rowIndex, activeCell.columnIndex).values = [[ text]];
     await context.sync();
   });
 }
+
 
 
       
