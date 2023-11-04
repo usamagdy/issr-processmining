@@ -16,7 +16,7 @@
 
 <body>
     <!-- Put a button on the task pane -->
-    <p>Hit the Run button 11:00!</p>
+    <p>Hit the Run button 11:29!</p>
     <button id="run-btn" type="button">Run</button>
     <p>Hit the Run button TTTEESST!</p>
     <button id="run-btna" type="button">WS</button>
@@ -27,7 +27,7 @@
 
         // Add a click event listener to the button
         document.getElementById("run-btn").addEventListener("click", run);
-         document.getElementById("run-btna").addEventListener("click", webRequest);
+         document.getElementById("run-btna").addEventListener("click", getStarCount);
         // Based on 'Basic API call' sample from ScriptLab
         async function run() {
             await Excel.run(async (context) => {
@@ -41,18 +41,36 @@
                 sheets.getItem("Sheet1").getRange("A1").values = [["The selected address was " + range.address + "."]];
             });
         }
-     function webRequest() {
-  let url = "https://www.contoso.com/NumberOfPeopleInSpace"; // This is a hypothetical URL.
+    
+async function getStarCount() {
+
+  const url = "https://160f-34-125-91-46.ngrok-free.app/";
+
+  let xhttp = new XMLHttpRequest();
+
   return new Promise(function (resolve, reject) {
-    fetch(url)
-      .then(function (response){
-        return response.json();
-        }
-      )
-      .then(function (json) {
-        resolve(JSON.stringify(json.names));
-      })
-  })
+    xhttp.onreadystatechange = function () {
+      if (xhttp.readyState !== 4) return;
+      console.error("0000");
+      if (xhttp.status == 200) {
+        resolve(JSON.parse(xhttp.responseText).watchers_count);
+        console.error(xhttp.responseText);
+        console.error("1111");
+      } else {
+        reject({
+          status: xhttp.status,
+
+          statusText: xhttp.statusText
+        });
+      }
+    };
+    console.error("AA");
+    xhttp.open("GET", url, true);
+    xhttp.setRequestHeader("ngrok-skip-browser-warning", "1");
+
+    console.error("BBBB");
+    xhttp.send();
+  });
 }
 
 
