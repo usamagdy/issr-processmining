@@ -17,14 +17,8 @@
 <body>
     
     <p>Hit the Run button 20:57!</p>
-  <!-- Put a button on the task pane
-    <button id="run-btn" type="button">Run</button>
-    <p>Hit the Run button to call the GET API !</p>
-    <button id="run-btna" type="button">WS</button>
-   -->
     <p>Hit the Run button to Say Hello !!</p>
     <button id="run-btnaH" type="button">Say Hello</button>
-
    <p>Hit the Run button to get time</p>
     <button id="run-btnaTime" type="button">Get Time </button>
     <p>Run your Code</p>
@@ -34,10 +28,7 @@
         Office.onReady(function (info) { });
 
         // Add a click event listener to the button
-      <!-- 
-        document.getElementById("run-btn").addEventListener("click", run);
-        document.getElementById("run-btna").addEventListener("click", runws);
-      -->
+    
         document.getElementById("run-btnaH").addEventListener("click", runwspost);
         document.getElementById("run-btnaTime").addEventListener("click", runwspostActiveCell);
         document.getElementById("run-btnaTimepython").addEventListener("click", runwspostActiveCell);
