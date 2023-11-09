@@ -35,7 +35,7 @@
     <!-- Put a button on the task pane -->
   
 		<!--
-  <h2>Hit the Run button 12:52!</h2>
+  <h2>Hit the Run button 02:00!</h2>
     <button id="run-btn" type="button">Run</button>
     <h2>Hit the Run button to call the GET API !</h2>
     <button id="run-btna" type="button">WS</button>
@@ -47,7 +47,7 @@
    <h2>Hit the Run button to get time</h2>
     <button id="run-btnaTime" type="button">Get Time </button>
     <h2>Hit the Run button to Run your Python code</h2>
-    <button id="run-btnaTimePython" type="button">Python </button>
+    <button id="run-btnPython" type="button">Python </button>
   
     <script>
         // Initialize Office.js
@@ -58,7 +58,7 @@
         document.getElementById("run-btna").addEventListener("click", runws);
         document.getElementById("run-btnaH").addEventListener("click", runwspost);
         document.getElementById("run-btnaTime").addEventListener("click", runwspostActiveCell);
-	document.getElementById("run-btnaTimePython").addEventListener("click", runwspostPython);
+	    document.getElementById("run-btnPython").addEventListener("click", runwspostPython);
       
 async function runwspostPython() {
   await Excel.run(async (context) => {
