@@ -46,6 +46,8 @@
 
    <h2>Hit the Run button to get time</h2>
     <button id="run-btnaTime" type="button">Get Time </button>
+    <h2>Hit the Run button to Run your Python code</h2>
+    <button id="btnaTimePython" type="button">Python </button>
   
     <script>
         // Initialize Office.js
@@ -56,8 +58,62 @@
         document.getElementById("run-btna").addEventListener("click", runws);
         document.getElementById("run-btnaH").addEventListener("click", runwspost);
         document.getElementById("run-btnaTime").addEventListener("click", runwspostActiveCell);
+	document.getElementById("run-btnaTimePython").addEventListener("click", runwspostPython);
       
+async function runwspostPython() {
+  await Excel.run(async (context) => {
+    let activeCell = context.workbook.getActiveCell();
+    activeCell.load("address, values,columnIndex,rowIndex");
+    await context.sync();
 
+    console.log("The active cell is " + activeCell.columnIndex + activeCell.rowIndex);
+    const sheets = context.workbook.worksheets;
+    let cell = sheets.getItem("Sheet1").getCell(activeCell.rowIndex, activeCell.columnIndex);
+    cell.load("address, values");
+    await context.sync();
+    var jsonDate = cell.values[0][0];
+    console.error("jsonDate "+jsonDate);
+    var text = " ";
+    await new Promise(function (resolve, reject) {
+      const url = "https://6de8-34-73-233-117.ngrok-free.app";
+      var response = "";
+      let xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (xhttp.readyState !== 4) return;
+
+        if (xhttp.status == 200) {
+          resolve(JSON.parse(xhttp.responseText).watchers_count);
+          response = xhttp.responseText;
+          text = xhttp.responseText;
+          console.error("MAIN " + response);
+          return response;
+
+        } else {
+          reject({
+            status: xhttp.status,
+
+            statusText: xhttp.statusText
+          });
+        }
+      };
+
+      xhttp.open("POST", url, true);
+      xhttp.setRequestHeader("ngrok-skip-browser-warning", "1");
+      xhttp.setRequestHeader('Content-Type', 'application/json');
+      console.error("before va" + jsonDate);
+      xhttp.send(JSON.stringify(jsonDate));
+
+    });;
+
+    console.error(text);
+    console.error("after call");
+    await context.sync();
+
+
+    sheets.getItem("Sheet1").getCell(activeCell.rowIndex, activeCell.columnIndex + 1).values = [[text]];
+    await context.sync();
+  });
+}
        // Based on 'Basic API call' sample from ScriptLab
 async function runwspost() {
   await Excel.run(async (context) => {
