@@ -12,42 +12,19 @@
     href="https://cdn.jsdelivr.net/gh/xlwings/bootstrap-xlwings@5.2.3-2/dist/bootstrap-xlwings.min.css"
     integrity="sha384-TZ8CaOSXLBEEL73Aw1vX6a/2YP7QHdiuilF2C8Put8X81F3FzyRgt9ba77CMKAXq" crossorigin="anonymous">
   <!-- Load Custom Functions -->
-   <style>
-        body {
-            background-color: #2f71c0;
-        }
-		h2 {
-		color:#F9F9F9;
-    display: block;
-    font-size: 1.5em;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-
-    </style>
-	
 </head>
 
-<body background-color="#2f71c0">
+<body>
     <!-- Put a button on the task pane -->
-  
-		<!--
-  <h2>Hit the Run button 02:00!</h2>
+    <p>Hit the Run button 20:57!</p>
     <button id="run-btn" type="button">Run</button>
-    <h2>Hit the Run button to call the GET API !</h2>
+    <p>Hit the Run button to call the GET API !</p>
     <button id="run-btna" type="button">WS</button>
-	-->
-	
-    <h2>Hit the Run button to Say Hello !!</h2>
+    <p>Hit the Run button to Say Hello !!</p>
     <button id="run-btnaH" type="button">Say Hello</button>
 
-   <h2>Hit the Run button to get time</h2>
+   <p>Hit the Run button to get time</p>
     <button id="run-btnaTime" type="button">Get Time </button>
-    <h2>Hit the Run button to Run your Python code</h2>
-    <button id="run-btnPython" type="button">Python </button>
   
     <script>
         // Initialize Office.js
@@ -57,63 +34,10 @@
         document.getElementById("run-btn").addEventListener("click", run);
         document.getElementById("run-btna").addEventListener("click", runws);
         document.getElementById("run-btnaH").addEventListener("click", runwspost);
-        document.getElementById("run-btnaTime").addEventListener("click", runwspost);
-	document.getElementById("run-btnPython").addEventListener("click", runwspostPython);
-// Based on 'Basic API call' sample from ScriptLab
-async function runwspostPython() {
-  await Excel.run(async (context) => {
-    let activeCell = context.workbook.getActiveCell();
-    activeCell.load("address, values,columnIndex,rowIndex");
-    await context.sync();
+        document.getElementById("run-btnaTime").addEventListener("click", runwspostActiveCell);
+      
 
-    console.log("The active cell is " + activeCell.columnIndex + activeCell.rowIndex);
-    const sheets = context.workbook.worksheets;
-    let cell = sheets.getItem("Sheet1").getCell(activeCell.rowIndex,activeCell.columnIndex );
-    cell.load("address, values");
-    await context.sync();
-    var jsonDate = cell.values[0][0];
-    console.error(jsonDate);
-    var text = " ";
-    await new Promise(function (resolve, reject) {
-      const url = "https://6de8-34-73-233-117.ngrok-free.app";
-      var response = "";
-      let xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-        if (xhttp.readyState !== 4) return;
-
-        if (xhttp.status == 200) {
-          resolve(JSON.parse(xhttp.responseText).watchers_count);
-          response = xhttp.responseText;
-          text = xhttp.responseText;
-          console.error("MAIN " + response);
-          return response;
-
-        } else {
-          reject({
-            status: xhttp.status,
-
-            statusText: xhttp.statusText
-          });
-        }
-      };
-
-      xhttp.open("POST", url, true);
-      xhttp.setRequestHeader("ngrok-skip-browser-warning", "1");
-      xhttp.setRequestHeader('Content-Type', 'application/json');
-      console.error("before va" + jsonDate);
-      xhttp.send(JSON.stringify(jsonDate));
-
-    });;
-
-    console.error(text);
-    console.error("after call");
-    await context.sync();
-
-
-    sheets.getItem("Sheet1").getCell(activeCell.rowIndex, activeCell.columnIndex+1).values  = [[ text]];
-    await context.sync();
-  });
-}
+       // Based on 'Basic API call' sample from ScriptLab
 async function runwspost() {
   await Excel.run(async (context) => {
     let activeCell = context.workbook.getActiveCell();
