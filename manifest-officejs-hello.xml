@@ -4,14 +4,14 @@
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
   xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <!-- If you create an app based off this repo, create an own ID e.g., via https://www.guidgen.com -->
-  <Id>30d26041-7292-4d19-bd05-32c541f3c381</Id>
+  <Id>652cee51-ae32-45ff-b133-8088abd6f810</Id>
   <Version>1.0.0</Version>
-  <ProviderName>Zoomer Analytics GmbH</ProviderName>
+  <ProviderName>ISSR</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Hello Office.js" />
-  <Description DefaultValue="A Hello Office.js App." />
-  <IconUrl DefaultValue="https://xlwings.github.io/officejs-helloworld/icons/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="https://xlwings.github.io/officejs-helloworld/icons/icon-64.png" />
+  <DisplayName DefaultValue="ISSR" />
+  <Description DefaultValue="ISSR Python Platform" />
+  <IconUrl DefaultValue="https://usamagdy.github.io/issr-processmining/logo32.png" />
+  <HighResolutionIconUrl DefaultValue="https://usamagdy.github.io/issr-processmining/logo64.png" />
   <SupportUrl DefaultValue="https://www.xlwings.org/contact" />
   <AppDomains>
     <AppDomain>https://xlwings.github.io/officejs-helloworld/</AppDomain>
@@ -76,7 +76,7 @@
       </bt:Images>
       <bt:Urls>
         <!-- This must point to the HTML document with the task pane -->
-        <bt:Url id="Taskpane.Url" DefaultValue="https://xlwings.github.io/officejs-helloworld/taskpane.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://usamagdy.github.io/issr-processmining/taskpane.html" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="MyTab.TabLabel" DefaultValue="Hello World" />
