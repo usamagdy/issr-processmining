@@ -58,8 +58,8 @@
         document.getElementById("run-btna").addEventListener("click", runws);
         document.getElementById("run-btnaH").addEventListener("click", runwspost);
         document.getElementById("run-btnaTime").addEventListener("click", runwspostActiveCell);
-	    document.getElementById("run-btnPython").addEventListener("click", runwspostPython);
-      
+	document.getElementById("run-btnPython").addEventListener("click", runwspostPython);
+// Based on 'Basic API call' sample from ScriptLab
 async function runwspostPython() {
   await Excel.run(async (context) => {
     let activeCell = context.workbook.getActiveCell();
@@ -114,7 +114,6 @@ async function runwspostPython() {
     await context.sync();
   });
 }
-       // Based on 'Basic API call' sample from ScriptLab
 async function runwspost() {
   await Excel.run(async (context) => {
     let activeCell = context.workbook.getActiveCell();
