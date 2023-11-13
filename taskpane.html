@@ -16,14 +16,20 @@
 
 <body style="background-color:#2f71c0;">
     <!-- Put a button on the task pane -->
-     <p style="color:white">10:20!</p>
+     <p style="color:white">10:26!</p>
 <table style="width:100%">
  <tr>
   <img src="https://usamagdy.github.io/issr-processmining/issrLogo.png" alt="ISSR" style="width:150px; height:100px;padding-left:15%;float:right;">
 
      <p style="color:white">كلية الدراسات العليا للبحوث الاحصائية</p>
 </tr>
+ <tr>
+  
+  <p style="color:white">Hit the Run button to Say Hello !!</p>
+    <button id="run-btnaHello" type="button">Say Hello</button>
 
+  </tr>
+  
 <tr>
  <p style="color:white">Hit the Run button to get time</p>
  <button id="run-btnaTime" type="button">Get Time </button>
@@ -35,6 +41,7 @@
     <button id="run-btnaHpython" type="button">Say Python</button>
 
   </tr>
+  
 </table>
     <script>
         // Initialize Office.js
@@ -44,6 +51,7 @@
      
         document.getElementById("run-btnaHpython").addEventListener("click", runwspostpy);
         document.getElementById("run-btnaTime").addEventListener("click", runwspostActiveCell);
+      document.getElementById("run-btnaHello").addEventListener("click", runwspost);
       
 
        // Based on 'Basic API call' sample from ScriptLab
@@ -117,7 +125,7 @@ async function runwspost() {
     console.error(jsonDate);
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://aff4-34-75-149-81.ngrok-free.app";
+      const url = "https://1b43-34-133-21-171.ngrok-free.app";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
