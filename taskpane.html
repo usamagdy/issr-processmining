@@ -16,7 +16,7 @@
 
 <body style="background-color:#2f71c0;">
     <!-- Put a button on the task pane -->
-     <p style="color:white">08:09!</p>
+     <p style="color:white">08:23!</p>
 <table style="width:100%">
  <tr>
   <img src="https://usamagdy.github.io/issr-processmining/issrLogo.png" alt="ISSR" style="width:120px; height:80px;float:right;">
@@ -88,7 +88,7 @@
     Excel.run((context) => {
       const startIndex = reader.result.toString().indexOf("base64,");
       const myBase64 = reader.result.toString().substr(startIndex + 7);
-      const sheet = context.workbook.worksheets.getItem("Shapes");
+      const sheet = context.workbook.worksheets.getItem("Sheet1");
       const image = sheet.shapes.addImage(myBase64);
       image.name = "Image";
       return context.sync();
@@ -107,7 +107,7 @@
     Excel.run((context) => {
       const startIndex = reader.result.toString().indexOf("base64,");
       const myBase64 = reader.result.toString().substr(startIndex + 7);
-      const sheet = context.workbook.worksheets.getItem("Shapes");
+      const sheet = context.workbook.worksheets.getItem("Sheet1");
       const image = sheet.shapes.addImage(myBase64);
       image.name = "Image";
       return context.sync();
