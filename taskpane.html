@@ -48,10 +48,19 @@
   </tr>
     <tr>
   
-  <p style="color:white">Hit the Run button to Say K !!</p>
-    <button id="run-subPlot" type="button">Say subPlot</button>
+  <p style="color:white">Hit the Run button to get distplot</p>
+    <button id="run-subPlot" type="button">Say distplot</button>
 
   </tr>
+
+  
+    <tr>
+  
+  <p style="color:white">Hit the Run button to Get PairGrid</p>
+    <button id="run-PairGrid" type="button">PairGrid</button>
+
+  </tr>
+  
   
 </table>
     <script>
@@ -65,12 +74,39 @@
       document.getElementById("run-btnaHello").addEventListener("click", runwspost);
       document.getElementById("run-subPlot").addEventListener("click", readImageFromFile);
       
+      document.getElementById("run-PairGrid").addEventListener("click", readImageFromFilePairGrid);
+      
       
        // Based on 'Basic API call' sample from ScriptLab
 
-  async function readImageFromFile() {
+  async function readImageFromFilePairGrid() {
   const reader = new FileReader();
   const myFile = await getFileFromUrl('https://usamagdy.github.io/issr-processmining/result1.png', 'example.jpg');
+
+  reader.onload = (event) => {
+    Excel.run((context) => {
+      const startIndex = reader.result.toString().indexOf("base64,");
+      const myBase64 = reader.result.toString().substr(startIndex + 7);
+      const sheet = context.workbook.worksheets.getItem("Sheet1");
+      const image = sheet.shapes.addImage(myBase64);
+      image.name = "Image";
+      return context.sync();
+    });
+  };
+
+  // Read in the image file as a data URL.
+  reader.readAsDataURL(myFile);
+  async function getFileFromUrl(url, name, defaultType = 'image/jpeg') {
+    const response = await fetch(url);
+    const data = await response.blob();
+    return new File([data], name, {
+      type: data.type || defaultType,
+    });
+  }
+}
+  async function readImageFromFile() {
+  const reader = new FileReader();
+  const myFile = await getFileFromUrl('https://usamagdy.github.io/issr-processmining/result2.png', 'example.jpg');
 
   reader.onload = (event) => {
     Excel.run((context) => {
