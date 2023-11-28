@@ -46,6 +46,12 @@
     <button id="run-btnaHpython" type="button">Say Python</button>
 
   </tr>
+    <tr>
+  
+  <p style="color:white">Hit the Run button to Say K !!</p>
+    <button id="run-subPlot" type="button">Say subPlot</button>
+
+  </tr>
   
 </table>
     <script>
@@ -57,6 +63,8 @@
         document.getElementById("run-btnaHpython").addEventListener("click", runwspostpy);
         document.getElementById("run-btnaTime").addEventListener("click", runwspostActiveCell);
       document.getElementById("run-btnaHello").addEventListener("click", runwspost);
+      document.getElementById("run-subPlot").addEventListener("click", readImageFromFile);
+      
       
        // Based on 'Basic API call' sample from ScriptLab
 
