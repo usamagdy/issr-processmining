@@ -16,7 +16,7 @@
 
 <body style="background-color:#2f71c0;">
     <!-- Put a button on the task pane -->
-     <p style="color:white">11:02!</p>
+     <p style="color:white">11:05!</p>
 <table style="width:100%">
  <tr>
   <img src="https://usamagdy.github.io/issr-processmining/issrLogo.png" alt="ISSR" style="width:120px; height:80px;float:right;">
@@ -60,7 +60,7 @@
       
   async function readImageFromFile() {
   const reader = new FileReader();
-  const myFile = await getFileFromUrl('https://usamagdy.github.io/issr-processmining/result1.png', 'example.jpg');
+  const myFile = await getFileFromUrl("https://usamagdy.github.io/issr-processmining/result1.png", "example.jpg");
 
   reader.onload = (event) => {
     await Excel.run((context) => {
@@ -78,7 +78,7 @@
       await context.sync();
 }
 
-async function getFileFromUrl(url, name, defaultType = 'image/jpeg') {
+async function getFileFromUrl(url, name, defaultType = "image/jpeg") {
   const response = await fetch(url);
   const data = await response.blob();
   return new File([data], name, {
