@@ -16,7 +16,7 @@
 
 <body style="background-color:#2f71c0;">
     <!-- Put a button on the task pane -->
-     <p style="color:white">11:30!</p>
+     <p style="color:white">08:54!</p>
 <table style="width:100%">
  <tr>
   <img src="https://usamagdy.github.io/issr-processmining/issrLogo.png" alt="ISSR" style="width:120px; height:80px;float:right;">
@@ -70,8 +70,8 @@
         // Add a click event listener to the button
      
         document.getElementById("run-btnaHpython").addEventListener("click", runwspostpy);
-        document.getElementById("run-btnaTime").addEventListener("click", runwspostActiveCell);
-      document.getElementById("run-btnaHello").addEventListener("click", runwspost);
+        document.getElementById("run-btnaTime").addEventListener("click", runwsposttime);
+      document.getElementById("run-btnaHello").addEventListener("click", runwsposthello);
       document.getElementById("run-subPlot").addEventListener("click", readImageFromFile);
       
       document.getElementById("run-PairGrid").addEventListener("click", readImageFromFilePairGrid);
@@ -144,7 +144,7 @@ async function runwspostpy() {
     console.error(jsonDate);
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://e6f3-35-199-161-76.ngrok-free.app";
+      const url = "https://53be-34-86-60-209.ngrok-free.app";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
@@ -184,7 +184,7 @@ async function runwspostpy() {
   });
 }
       
-async function runwspost() {
+async function runwsposthello() {
   await Excel.run(async (context) => {
     let activeCell = context.workbook.getActiveCell();
     activeCell.load("address, values,columnIndex,rowIndex");
@@ -242,7 +242,7 @@ async function runwspost() {
 
       
 
-async function runwspostActiveCell() {
+async function runwsposttime() {
   await Excel.run(async (context) => {
     let activeCell = context.workbook.getActiveCell();
     activeCell.load("address, values,columnIndex,rowIndex");
@@ -260,7 +260,7 @@ async function runwspostActiveCell() {
     console.error(jsonDate);
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://bd57-34-125-110-216.ngrok-free.app";
+      const url = "https://5dd4-34-80-227-103.ngrok-free.app";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
