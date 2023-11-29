@@ -70,9 +70,9 @@
 
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://xlwings.github.io/officejs-helloworld/icons/icon-16.png" />
-        <bt:Image id="Icon.32x32" DefaultValue="https://xlwings.github.io/officejs-helloworld/icons/icon-32.png" />
-        <bt:Image id="Icon.80x80" DefaultValue="https://xlwings.github.io/officejs-helloworld/icons/icon-80.png" />
+        <bt:Image id="Icon.16x16" DefaultValue="https://usamagdy.github.io/issr-processmining/logo32.png" />
+        <bt:Image id="Icon.32x32" DefaultValue="https://usamagdy.github.io/issr-processmining/logo32.png" />
+        <bt:Image id="Icon.80x80" DefaultValue="https://usamagdy.github.io/issr-processmining/logo64.png" />
       </bt:Images>
       <bt:Urls>
         <!-- This must point to the HTML document with the task pane -->
