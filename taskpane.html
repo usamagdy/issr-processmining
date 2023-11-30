@@ -87,7 +87,7 @@
     Excel.run((context) => {
       const startIndex = reader.result.toString().indexOf("base64,");
       const myBase64 = reader.result.toString().substr(startIndex + 7);
-      const sheet = context.workbook.worksheets.getItem("Sheet1");
+      const sheet = context.workbook.worksheets.getItem("Sheet2");
       const image = sheet.shapes.addImage(myBase64);
       image.name = "Image";
       return context.sync();
@@ -112,7 +112,7 @@
     Excel.run((context) => {
       const startIndex = reader.result.toString().indexOf("base64,");
       const myBase64 = reader.result.toString().substr(startIndex + 7);
-      const sheet = context.workbook.worksheets.getItem("Sheet1");
+      const sheet = context.workbook.worksheets.getItem("Sheet2");
       const image = sheet.shapes.addImage(myBase64);
       image.name = "Image";
       return context.sync();
