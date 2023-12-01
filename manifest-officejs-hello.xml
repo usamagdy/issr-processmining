@@ -6,10 +6,10 @@
   <!-- If you create an app based off this repo, create an own ID e.g., via https://www.guidgen.com -->
   <Id>652cee51-ae32-45ff-b133-8088abd6f810</Id>
   <Version>1.0.0</Version>
-  <ProviderName>ISSR</ProviderName>
+  <ProviderName>Pythonista Egypt</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="ISSR" />
-  <Description DefaultValue="ISSR Python Platform" />
+  <DisplayName DefaultValue="Pythonista Egypt" />
+  <Description DefaultValue="Pythonista Egypt Platform" />
   <IconUrl DefaultValue="https://usamagdy.github.io/issr-processmining/logo32.png" />
   <HighResolutionIconUrl DefaultValue="https://usamagdy.github.io/issr-processmining/logo64.png" />
   <SupportUrl DefaultValue="https://www.xlwings.org/contact" />
@@ -79,7 +79,7 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://usamagdy.github.io/issr-processmining/taskpane.html" />
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="MyTab.TabLabel" DefaultValue="Issr" />
+        <bt:String id="MyTab.TabLabel" DefaultValue="Pythonista Egypt" />
         <bt:String id="MyCommandsGroup.Label" DefaultValue="MyGroup" />
         <bt:String id="MyTaskpaneButton.Label" DefaultValue="Show Taskpane" />
       </bt:ShortStrings>
