@@ -14,6 +14,51 @@
   <!-- Load Custom Functions -->
  
  <style>
+   
+/* CSS */
+.button-21 {
+  align-items: center;
+  appearance: none;
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: CircularStd,sans-serif;
+  font-size: 1rem;
+  height: auto;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 6px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s,background-position .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button-21:active,
+.button-21:focus {
+  outline: none;
+}
+
+.button-21:hover {
+  background-position: -20px -20px;
+}
+
+.button-21:focus:not(:active) {
+  box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+}
+   
 .button {
   display: inline-block;
   padding: 4px 10px;
@@ -35,6 +80,43 @@
   background-color: #80c9e8;
   box-shadow: 0 2px #666;
   transform: translateY(4px);
+}
+   
+/* CSS */
+.button-63 {
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 19px 24px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-63:active,
+.button-63:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-63 {
+    font-size: 24px;
+    min-width: 196px;
+  }
 }
 </style>
 </head>
@@ -90,7 +172,7 @@
     <tr>
   
   <p style="color:white">Hit the  button to get distplot</p>
-    <button id="run-subPlot" type="button">Dist Plot</button>
+    <button id="run-subPlot" type="button" class="button-21" >Dist Plot</button>
 
   </tr>
 
@@ -98,7 +180,7 @@
     <tr>
   
   <p style="color:white">Hit the  button to Get PairGrid</p>
-    <button id="run-PairGrid" type="button">Pair Grid</button>
+    <button id="run-PairGrid" type="button" class="button-63" >Pair Grid</button>
 
   </tr>
   
