@@ -354,16 +354,18 @@
     console.error(jsonDate);
     if (jsonDate.indexOf("&") !== -1) {
       console.error("String contains '&'");
+      console.error(" jsonDate" + jsonDate)  ;
+      
       var jsonTemp = jsonDate.substring(jsonDate.indexOf("&") + 1);
       jsonTemp = jsonTemp.substring(0, jsonTemp.indexOf("&"));
-
-      let cells = sheets.getItem("Sheet1").getRange("Sheet1!A1");
+      console.error("jsonTemp    ++++" + jsonTemp);
+      let cells = sheets.getItem("Sheet1").getRange(jsonTemp);
       cells.load("address, values");
       await context.sync();
 
+      console.error(cell.address + "   jsonTemp   " + jsonTemp + "   " + cells.values);
 
-
-      jsonDate = jsonDate.replace("&" + jsonTemp + "&", cells.values);
+      jsonDate = jsonDate.replace(("&" + jsonTemp + "&"), cells.values);
 
       console.error("---*-- " + jsonDate);
 
