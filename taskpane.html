@@ -157,9 +157,9 @@
      <tr class="center">
 
   
-  <p style="color:white">Hit the button to Say Random
+  <p style="color:white">yosri- Random
   </p>
-    <button id="run-btnaHelloRan" type="button" class="button-21">Random</button>
+    <button id="run-btnaHelloRanyosri" type="button" class="button-21">Random</button>
 
   </tr>
     
@@ -266,7 +266,7 @@
       
       document.getElementById("run-PairGrid").addEventListener("click", readImageFromFilePairGrid);
             document.getElementById("run-datamini").addEventListener("click", readImageFromFileResult);
-      document.getElementById("run-btnaHelloRan").addEventListener("click", runwsposthelloRandom);
+      document.getElementById("run-btnaHelloRanyosri").addEventListener("click", runwsposthelloRandomyosri);
 
       
 
@@ -481,7 +481,7 @@ async function runwspostpy() {
     await context.sync();
   });
 }
-async function runwsposthelloRandom() {
+async function runwsposthelloRandomyosri() {
   await Excel.run(async (context) => {
     let activeCell = context.workbook.getActiveCell();
     activeCell.load("address, values,columnIndex,rowIndex");
@@ -496,7 +496,7 @@ async function runwsposthelloRandom() {
     console.error(jsonDate);
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://5b01-34-90-1-225.ngrok-free.app/ran";
+      const url = "https://8122-34-125-108-218.ngrok-free.app/ran";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
