@@ -124,7 +124,7 @@
 
 <body style="background-color:#2f71c0;">
     <!-- Put a button on the task pane -->
-     <p style="color:white">09:10!-Yousri</p>
+     <p style="color:white">01:10!</p>
 <table style="width:100%" >
  <tr class="center">
   <img src="https://usamagdy.github.io/issr-processmining/issrLogo.png" alt="ISSR" style="width:120px; height:80px;float:right;">
@@ -250,7 +250,31 @@
   </div>
 </div>
 
+ <div class="container">
+  <h2 style="color:white" >security</h2>
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demosecurity">Security </button>
+  <div id="demosecurity" class="collapse">
 
+<table>
+    <tr class="center">
+
+  </br>
+</tr>
+    <tr class="center">
+
+  
+  <p style="color:white">Hit the  button to check your website virus </p>
+    <button id="run-virus" type="button" class="button-21" >virus</button>
+
+  </tr>
+
+    
+  
+</table>
+
+    
+  </div>
+</div>
   
     <script>
         // Initialize Office.js
@@ -267,6 +291,7 @@
       document.getElementById("run-PairGrid").addEventListener("click", readImageFromFilePairGrid);
             document.getElementById("run-datamini").addEventListener("click", readImageFromFileResult);
       document.getElementById("run-btnaHelloRanyosri").addEventListener("click", runwsposthelloRandomyosri);
+      document.getElementById("run-virus").addEventListener("click", runwsvirus);
 
       
 
@@ -496,7 +521,7 @@ async function runwsposthelloRandomyosri() {
     console.error(jsonDate);
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://3d60-35-196-175-63.ngrok-free.app/ran";
+      const url = "https://66d67bd50317.ngrok.app/ran";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
@@ -534,7 +559,61 @@ async function runwsposthelloRandomyosri() {
     sheets.getItem("Sheet1").getCell(activeCell.rowIndex, activeCell.columnIndex+1).values  = [[ text]];
     await context.sync();
   });
-}      
+}
+async function runwsvirus() {
+  await Excel.run(async (context) => {
+    let activeCell = context.workbook.getActiveCell();
+    activeCell.load("address, values,columnIndex,rowIndex");
+    await context.sync();
+
+    console.log("The active cell is " + activeCell.columnIndex + activeCell.rowIndex);
+    const sheets = context.workbook.worksheets;
+    let cell = sheets.getItem("Sheet1").getCell(activeCell.rowIndex,activeCell.columnIndex );
+    cell.load("address, values");
+    await context.sync();
+    var jsonDate = cell.values[0][0];
+    console.error(jsonDate);
+    var text = " ";
+    await new Promise(function (resolve, reject) {
+      const url = "https://66d67bd50317.ngrok.app/virus";
+      var response = "";
+      let xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (xhttp.readyState !== 4) return;
+
+        if (xhttp.status == 200) {
+          resolve(JSON.parse(xhttp.responseText).watchers_count);
+          response = xhttp.responseText;
+          text = xhttp.responseText;
+          console.error("MAIN " + response);
+          return response;
+
+        } else {
+          reject({
+            status: xhttp.status,
+
+            statusText: xhttp.statusText
+          });
+        }
+      };
+
+      xhttp.open("POST", url, true);
+      xhttp.setRequestHeader("ngrok-skip-browser-warning", "1");
+      xhttp.setRequestHeader('Content-Type', 'application/json');
+      console.error("before va" + jsonDate);
+      xhttp.send(JSON.stringify(jsonDate));
+
+    });;
+
+    console.error(text);
+    console.error("after call");
+    await context.sync();
+
+
+    sheets.getItem("Sheet1").getCell(activeCell.rowIndex, activeCell.columnIndex+1).values  = [[ text]];
+    await context.sync();
+  });
+}            
 async function runwsposthello() {
   await Excel.run(async (context) => {
     let activeCell = context.workbook.getActiveCell();
