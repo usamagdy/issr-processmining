@@ -419,7 +419,7 @@
 
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://ac815f3010db.ngrok.app/python";
+      const url = "https://f19c437eb2ad.ngrok.app/python";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
@@ -475,7 +475,7 @@ async function runwspostpy() {
     console.error(jsonDate);
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://ac815f3010db.ngrok.app/python";
+      const url = "https://f19c437eb2ad.ngrok.app/python";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
@@ -529,7 +529,7 @@ async function runwsposthelloRandomyosri() {
     console.error(jsonDate);
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://ac815f3010db.ngrok.app/ran";
+      const url = "https://f19c437eb2ad.ngrok.app/ran";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
@@ -571,20 +571,22 @@ async function runwsposthelloRandomyosri() {
       
 async function runencrypt() {
   await Excel.run(async (context) => {
-    let activeCell = context.workbook.getActiveCell();
-    activeCell.load("address, values,columnIndex,rowIndex");
-    await context.sync();
+    var Load_Opts_Arr = ['rowCount', 'rowIndex', 'columnCount', 'columnIndex', 'values', 'isEntireColumn', 'isEntireRow']  
 
-    console.log("The active cell is " + activeCell.columnIndex + activeCell.rowIndex);
+    let activeCell = context.workbook.getSelectedRange();
+    activeCell.load(Load_Opts_Arr);
+    await context.sync(); 
+    console.log("The active cell is--- " + activeCell.columnIndex + activeCell.rowIndex);
     const sheets = context.workbook.worksheets;
-    let cell = sheets.getItem("Sheet1").getCell(activeCell.rowIndex,activeCell.columnIndex );
+    let cell = sheets.getItem("Sheet1").getCell(activeCell.rowIndex, activeCell.columnIndex);
     cell.load("address, values");
     await context.sync();
-    var jsonDate = cell.values[0][0];
+    console.error(cell.values);
+    var jsonDate = activeCell.values;
     console.error(jsonDate);
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://ac815f3010db.ngrok.app/encrypt";
+      const url = "https://f19c437eb2ad.ngrok.app/encrypt";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
@@ -619,7 +621,7 @@ async function runencrypt() {
     await context.sync();
 
 
-    sheets.getItem("Sheet1").getCell(activeCell.rowIndex, activeCell.columnIndex+1).values  = [[ text]];
+    sheets.getItem("Sheet1").getCell(activeCell.rowIndex+1, activeCell.columnIndex).values = [[text]];
     await context.sync();
   });
 }         
@@ -639,7 +641,7 @@ async function runwsvirus() {
     console.error(jsonDate);
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://ac815f3010db.ngrok.app/virus";
+      const url = "https://f19c437eb2ad.ngrok.app/virus";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
@@ -693,7 +695,7 @@ async function runwsposthello() {
     console.error(jsonDate);
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://ac815f3010db.ngrok.app/hello";
+      const url = "https://f19c437eb2ad.ngrok.app/hello";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
@@ -754,7 +756,7 @@ async function runwsposttime() {
     console.error(jsonDate);
     var text = " ";
     await new Promise(function (resolve, reject) {
-      const url = "https://ac815f3010db.ngrok.app/time";
+      const url = "https://f19c437eb2ad.ngrok.app/time";
       var response = "";
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
